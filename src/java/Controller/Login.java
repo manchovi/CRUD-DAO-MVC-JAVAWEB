@@ -25,8 +25,8 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         
-        //RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
-        //dispatcher.forward(request, response);
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+        dispatcher.forward(request, response);
         //response.sendRedirect("/index.jsp");
     }
 
