@@ -1,4 +1,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+   try{
+        HttpSession var_Session = request.getSession(false);
+        String nombres = (String) var_Session.getAttribute("sessionNombres");
+        String user = (String) var_Session.getAttribute("sessionUsuario");
+        String tipo = (String) var_Session.getAttribute("sessionTipo");
+        String correo = (String) var_Session.getAttribute("sessionEmail");
+        if(user == null){
+            response.sendRedirect("./");
+        }else if(user!=null){
+%>
 <!DOCTYPE html>
 <!-- Para importar los datos de la clase Categoria -->
 <jsp:useBean id="categoria" scope="session" class="Model.Categoria" />
@@ -36,7 +47,8 @@
     </head>
     <body>
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
-           
+        
+      <div class="estilo_consulta">     
         <h3>Mantenimiento Categorias</h3>
         <form class="form-horizontal" id="frmCategoria" name="frmCategoria" action="<%= request.getContextPath() %>/categorias" method="post">
             <input type="hidden" name="id_categoria" value="<%= id %>" >
@@ -73,8 +85,15 @@
                 </div>
             </div>   
         </form>
-
+      </div>
          <%@include file="../WEB-INF/Vistas-Parciales/pie.jspf" %>
     </body>
 </html>
+<%
+            }
+               //Aca puede ir un mensaje para informar que no se ha iniciado sesión.
+            }catch(Exception e){
+
+            }
+%>
 <!-- Autor: Prof. Manuel de Jesús Gámez López -->

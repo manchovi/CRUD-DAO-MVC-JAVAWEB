@@ -1,5 +1,16 @@
 <%@page import="Model.Categoria"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<% 
+   try{
+        HttpSession var_Session = request.getSession(false);
+        String nombres = (String) var_Session.getAttribute("sessionNombres");
+        String user = (String) var_Session.getAttribute("sessionUsuario");
+        String tipo = (String) var_Session.getAttribute("sessionTipo");
+        String correo = (String) var_Session.getAttribute("sessionEmail");
+        if(user == null){
+            response.sendRedirect("./");
+        }else if(user!=null){
+%>
 <!DOCTYPE html>
 <!-- El id debe ser el mismo que se le colocó de nombre a la sesión en el controlador -->
 <jsp:useBean id="lista" scope="session" class="java.util.List" />
@@ -18,11 +29,13 @@
         
         <!-- Todo el contenido de la aplicación -->
         
-        <div style="width: 600px;">
+        <!--<div style="width: 600px;">-->
+        <!--<div style="text-align: center;">-->
+        <div class="estilo_consulta">
             <!--<a href="#" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nueva categoria</a>-->
             <a href="<%= request.getContextPath() %>/categorias?opcion=crear" class="btn btn-success btn-sm glyphicon glyphicon-pencil" role="button">Nueva categoria</a>
             <h3>Listado de Categorias Registradas</h3>
-            <table class="table table-striped">
+            <table class="table table-striped table-hover">
                 <tr>
                     <th>ID</th><th>NOMBRE</th><th>ESTADO</th><th>ACCION</th>
                 </tr>
@@ -50,10 +63,20 @@
                 %>
             </table>
         </div>
+        <!--</div>-->
         <!-- End content -->
         
         <%@include file="../WEB-INF/Vistas-Parciales/pie.jspf" %>
     </body>
 </html>
+
+<%
+            }
+               //Aca puede ir un mensaje para informar que no se ha iniciado sesión.
+            }catch(Exception e){
+
+            }
+%>
+   
 <!-- Autor: Prof. Manuel de Jesús Gámez López -->
 

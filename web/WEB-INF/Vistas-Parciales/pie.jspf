@@ -5,6 +5,7 @@
 
     </div>
     <div class="pie">
-        @COPY; ITCA-FEPADE
+        ITCA-FEPADE &copy; 2019-2020
+        <br>Autor: Manuel de Jesús Gámez López
     </div>
 </div>

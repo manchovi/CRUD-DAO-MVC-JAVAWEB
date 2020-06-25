@@ -33,7 +33,7 @@ public class Index extends HttpServlet {
             throws ServletException, IOException {
         //processRequest(request, response);
         //Si da error importar la libreria correspondiente import javax.servlet.RequestDispatcher;
-        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/index.jsp");
+        RequestDispatcher dispatcher = getServletContext().getRequestDispatcher("/menuprincipal.jsp");
         dispatcher.forward(request, response);
         
         //response.sendRedirect("/index.jsp");
