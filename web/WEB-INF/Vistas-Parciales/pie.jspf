@@ -1,11 +1,21 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-
-<!-- Aquí se deben cerrar los div abiertos en encabezado.jspf -->
-
-    </div>
-    <div class="pie">
+    
+<!-- Footer -->
+<div style="bottom: 0px;">
+<footer style="background-color: gray;" class="page-footer font-small blue">
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright
+      <div class="row">
+          <a style="color: white;" href="https://mjgl.com.sv/">Manuel de Jesús Gámez López</a>
+      </div>   
+  </div>
+  <!-- Copyright -->
+</footer>
+</div>
+<!-- Footer -->
+    
+    <!--<div class="pie">
         ITCA-FEPADE &copy; 2019-2020
         <br>Autor: Manuel de Jesús Gámez López
-    </div>
-</div>
+    </div>-->

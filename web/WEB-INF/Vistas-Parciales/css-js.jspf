@@ -1,8 +1,8 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 
-<!-- Estilo personalizado -->
-<link href="bootstrap/css/estilo-base.css" type="text/css" rel="stylesheet">
+<!-- Estilo personalizado 
+<link href="bootstrap/css/estilo-base.css" type="text/css" rel="stylesheet">-->
 
 <!-- Estilos bootstrap -->
 <link href="bootstrap/css/bootstrap-theme.css" type="text/css" rel="stylesheet">
@@ -11,12 +11,37 @@
 <link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
 <link href="bootstrap/css/bootstrap.min.css" type="text/css" rel="stylesheet">
 
-<!-- Script js de bootstrap -->
-<script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
-<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+ <!-- JQuery DataTable Css -->
+ <link href="jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css" rel="stylesheet">
 
 <!-- Script librería de jquery -->
 <script src="bootstrap/js/jquery-3.2.1.js" type="text/javascript"></script>
 <script src="bootstrap/js/jquery-3.2.1.min.js" type="text/javascript"></script>
+  
+<!-- Script js de bootstrap -->
+<script src="bootstrap/js/bootstrap.js" type="text/javascript"></script>
+<script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+
+ <!--<script src="jquery-datatable/jquery.js" type="text/javascript"></script>
+ <script src="jquery-datatable/jquery.min.js" type="text/javascript"></script>-->
 
 
+<!-- Jquery DataTable Plugin Js -->
+<script src="jquery-datatable/jquery.dataTables.js" type="text/javascript"></script>
+<script src="jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js" type="text/javascript"></script>
+<script src="jquery-datatable/admin.js"></script>
+<script src="jquery-datatable/jquery-datatable.js" type="text/javascript"></script>
+<!-- Demo Js -->
+<!--<script src="jquery-datatable/demo.js"></script>-->
+
+<script src="jquery-datatable/extensions/export/dataTables.buttons.min.js" type="text/javascript"></script>
+<script src="jquery-datatable/extensions/export/buttons.flash.min.js" type="text/javascript"></script>
+<script src="jquery-datatable/extensions/export/jszip.min.js" type="text/javascript"></script>
+<script src="jquery-datatable/extensions/export/pdfmake.min.js" type="text/javascript"></script>
+<script src="jquery-datatable/extensions/export/vfs_fonts.js" type="text/javascript"></script>
+<script src="jquery-datatable/extensions/export/buttons.html5.min.js" type="text/javascript"></script>
+<script src="jquery-datatable/extensions/export/buttons.print.min.js" type="text/javascript"></script>
+
+<!--<script src="./js/ripples.min.js"></script>
+<script src="./js/jquery.mCustomScrollbar.concat.min.js"></script>
+<script src="./js/main.js"></script>-->

@@ -16,16 +16,15 @@
         //document.getElementById("ejemplo").innerHTML = mensaje;
     }
 </script>
-<div>
-    <div class="encabezado">
-        SISTEMA DE CONTROL DE INVENTARIO
-        <!-- Los href aca apuntan a los servlets creados dentro del controlador -->
-        <a href="index" class="btn btn-primary btn-sm" role="button">Inicio</a> |
-        <!--<a href="categorias" class="btn btn-primary btn-sm" role="button">Categorias</a>-->
-        <a href="categorias?opcion=listar" class="btn btn-primary btn-sm" role="button">Categorias</a> |
-        <!--<a href="salir" class="btn btn-danger btn-sm" role="button">Salir</a>-->
-        <a href="#" class="btn btn-danger btn-sm" role="button" onclick="salir();">Salir</a>
-    </div>
-    
-    <div class="contenido">
-   <!--Este div no se cierra aquí, se cierra en el pie.jspf -->
+        
+<div style="background-color: #336699;" class="header">
+        <div class="row">
+            <div class="col-md-1"></div>
+            <div style="font-size: 25px;color: #fff;" class="col-md-8">SISTEMA CONTROL DE INVENTARIO</div>
+            <div class="col-md-3">
+                <a href="index" class="btn btn-primary btn-sm" role="button">Inicio</a> |
+                <a href="categorias?opcion=listar" class="btn btn-primary btn-sm" role="button">Categorias</a> |
+                <a href="#" class="btn btn-danger btn-sm" role="button" onclick="salir();">Salir</a>
+            </div>
+      </div>    
+</div>

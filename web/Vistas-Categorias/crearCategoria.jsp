@@ -48,8 +48,9 @@
     <body>
         <%@include file="../WEB-INF/Vistas-Parciales/encabezado.jspf" %>
         
-      <div class="estilo_consulta">     
-        <h3>Mantenimiento Categorias</h3>
+      <div class="container">     
+          <div class="row">&nbsp;</div> <div class="row">&nbsp;</div> <div class="row">&nbsp;</div>
+        <h3 align="center">Mantenimiento Categorias</h3>
         <form class="form-horizontal" id="frmCategoria" name="frmCategoria" action="<%= request.getContextPath() %>/categorias" method="post">
             <input type="hidden" name="id_categoria" value="<%= id %>" >
             
@@ -85,6 +86,7 @@
                 </div>
             </div>   
         </form>
+         <div class="row">&nbsp;</div> <div class="row">&nbsp;</div> <div class="row">&nbsp;</div>
       </div>
          <%@include file="../WEB-INF/Vistas-Parciales/pie.jspf" %>
     </body>

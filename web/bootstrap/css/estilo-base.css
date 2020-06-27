@@ -8,14 +8,11 @@
 
 /*.contenido{
     padding: 0px;
-}
-left: 105px;
-right: 25px;
-*/
+}*/
+
 
 .contenido{
-    position: fixed; /* podría ser relative */
-    width: 90%;
+    width: 100%;
     left: 5%;
     right: 5%;
     top: 50px;
@@ -27,10 +24,8 @@ right: 25px;
 
 .pie{
     background-color: #9d9d9d;
-    position: absolute;
     bottom: 0;
     width: 100%;
-    height: 40px;
     color: white;
     text-align: center;
 }
@@ -50,5 +45,11 @@ right: 25px;
     margin-left: 5%;
     margin-right: 5%;
     top: 50px;
+}
+
+.th{
+    text-align: center;
+    background-color: #7ea2b4;
+    color: #fff;
 }
 
