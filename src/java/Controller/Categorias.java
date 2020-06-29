@@ -3,8 +3,11 @@ package Controller;
 import DAO.CategoriaDAO;
 import DAO.CategoriaDAOImplementar;
 import Model.Categoria;
+import Model.ResultadoJson;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -80,10 +83,30 @@ public class Categorias extends HttpServlet {
         }else if(parametro.equals("eliminar")){
             int del_id = Integer.parseInt(request.getParameter("id"));
             CategoriaDAO categoria = new CategoriaDAOImplementar();
-            categoria.borrarCat(del_id);    
-            this.listaCategorias(request, response);
-        }
-        
+            //categoria.borrarCat(del_id);
+            //this.listaCategorias(request, response);
+            
+            boolean resultado = categoria.borrarCat(del_id);
+            ArrayList<ResultadoJson> lista=new ArrayList<ResultadoJson>();
+            Gson gson=new Gson();
+            if(resultado){
+                //Actualizo la variable de sesión "lista" con los datos consultados en la
+                //bd por medio: categoria.Listar(), esto permite actualizar los datos en la vista consulta categorias.
+                HttpSession session = request.getSession(true);
+                session.setAttribute("lista", categoria.Listar());
+                //Aca mando al contructor los 3 datos del dialogo.
+                //Título, icono, Contenido del Mensaje.
+                lista.add(new ResultadoJson("MENSAJE!","success","Registro eliminado correctamente."));
+            }else{
+                lista.add(new ResultadoJson("Lo sentimos!","error","Error. No se pudo eliminar el registro."));
+            }
+            
+            response.setContentType("application/json");
+            //response.getWriter().write(json.toString());
+            PrintWriter pw = response.getWriter();
+            pw.println(gson.toJson(lista));
+            pw.close(); 
+        } 
     }
 
     
