@@ -1,17 +1,37 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
 
-<!-- Footer -->
-<footer class="footer text-xs-center">
-  <!-- Copyright -->
-  <div class="container">© 2020 Copyright
-      <div class="row">
-          <a href="https://mjgl.com.sv/">Manuel de Jesús Gámez López</a>
-      </div>   
-  </div>
-  <!-- Copyright -->
+<footer class="footer">
+    <div style="background-color: #336699;" class="footer">
+            <div class="row">
+                <div style="font-size: 20px;color: #fff;" class="col-md-12 text-center"> ITCA-FEPADE &copy; 2021
+            <br>Autor: Manuel de Jesús Gámez López</div>
+          </div>    
+    </div>
 </footer>
-<!-- Footer -->
+
+
+
+  <!--<div class="row">-->
+    <!--<div class="col col-md-2 col-sm-3 col-xs-12">
+      ...
+    </div>-->
+    <!--<div class="col col-md-8 col-sm-3 col-xs-12 text-center">-->
+   
+    <!--<div style="margin-top:400px; margin-bottom: 0%" class="col col-md-12 text-center">
+        <div style="width: 100%; height: 100%; background-color: #34ce57;">
+            <p1>@copyright ITCA-FEPADE</p1>
+        </div>
+    </div>-->
+    
+    
+    <!--<div class="col col-md-2 col-sm-3 col-xs-12">
+      ...
+    </div>-->
+  
+  <!--</div>-->
+
+
     
     <!--<div class="pie">
         ITCA-FEPADE &copy; 2019-2020

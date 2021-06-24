@@ -27,6 +27,14 @@
         
         <!-- Todo el contenido de la aplicación -->
         <div id="load-categorias"></div>
+        
+        
+        <!--<div id="statusMsg"></div>-->
+        
+        <!--<div id="load-categorias1"style="background-color: rgb(163, 228, 215);
+            color: rgb(0, 0, 0);border: 2px solid rgb(7, 108, 151);height: 500px;">
+        </div>-->
+        
         <!-- End content -->
         
         <%@include file="../WEB-INF/Vistas-Parciales/pie.jspf" %>

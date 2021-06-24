@@ -6,10 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <title>Sign-in Inventario</title>
-
+    <link rel="icon" href="assets/img/favicon3.ico" type="image/x-icon">
     <!-- Bootstrap core CSS -->
     <!-- <link href="../assets/dist/css/bootstrap.css" rel="stylesheet">-->
-    <link href="bootstrap/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet">
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -27,7 +27,7 @@
       }
     </style>
     <!-- Custom styles for this template -->
-    <link href="bootstrap/css/signin.css" type="text/css" rel="stylesheet">
+    <link href="css/signin.css" type="text/css" rel="stylesheet">
   </head>
   <body class="text-center">
       <form class="form-signin" action="sesion" method="POST">

@@ -55,17 +55,16 @@ public class Categorias extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        //processRequest(request, response);
-        //Se captura el parámetro que se esta enviando.
-        String parametro = request.getParameter("opcion");
-        //System.out.println(parametro);
         
+        String parametro = request.getParameter("opcion");
         //Evaluar si el parámetro es crear o listar o cualquier otro.
         if(parametro.equals("crear")){
             //Vista o formulario para registrar nueva categoria.
             String pagina = "/Vistas-Categorias/crearCategoria.jsp";
             RequestDispatcher dispatcher = getServletContext().getRequestDispatcher(pagina);
             dispatcher.forward(request, response);
+            
+            //response.sendRedirect(pagina);
             
         }else if(parametro.equals("listar")){
             this.listaCategorias(request, response);
@@ -81,10 +80,15 @@ public class Categorias extends HttpServlet {
             dispatcher.forward(request, response);
             
         }else if(parametro.equals("eliminar")){
-            int del_id = Integer.parseInt(request.getParameter("id"));
+            int del_id = Integer.parseInt(request.getParameter("id_cat"));
             CategoriaDAO categoria = new CategoriaDAOImplementar();
-            //categoria.borrarCat(del_id);
-            //this.listaCategorias(request, response);
+            categoria.borrarCat(del_id);
+            this.listaCategorias(request, response);
+            
+            
+            
+            
+            
             
             boolean resultado = categoria.borrarCat(del_id);
             ArrayList<ResultadoJson> lista=new ArrayList<ResultadoJson>();
@@ -107,6 +111,29 @@ public class Categorias extends HttpServlet {
             pw.println(gson.toJson(lista));
             pw.close(); 
         } 
+        
+        
+        
+        //processRequest(request, response);
+        //Se captura el parámetro que se esta enviando.
+        /*String parametro = request.getParameter("opcion");
+        String id_cat = request.getParameter("id_cat");
+        String nombre_cat = request.getParameter("nombre_cat");
+        String estado_cat = request.getParameter("estado_cat");*/
+        //System.out.println(parametro);
+        
+        /*response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            System.out.println(parametro);
+            System.out.println(id_cat);
+            System.out.println(nombre_cat);
+            System.out.println(estado_cat);
+        }*/
+        
+        
+       
+        
+        
     }
 
     
@@ -123,6 +150,7 @@ public class Categorias extends HttpServlet {
             guardar_cat.setEstado_categoria(1);           //Estado 1.
             categoria.guardarCat(guardar_cat);
         */
+        String status;
         
         Categoria categoria = new Categoria();
         //Se efectua el casting o conversión de datos porque lo ingresado en el formulario es texto.
@@ -135,9 +163,22 @@ public class Categorias extends HttpServlet {
         categoria.setEstado_categoria(estado_categoria);
         
         CategoriaDAO guardarCategoria = new CategoriaDAOImplementar();
-        guardarCategoria.guardarCat(categoria);
+        //guardarCategoria.guardarCat(categoria);
+        //this.listaCategorias(request, response);
         
-        this.listaCategorias(request, response);
+        boolean resultado = guardarCategoria.guardarCat(categoria);
+        if(resultado){
+            HttpSession session = request.getSession(true);
+            session.setAttribute("lista", guardarCategoria.Listar());
+            status = "ok";
+        }else{
+            status = "err";
+        }
+        
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            out.print(status);
+        }
         
     }
 

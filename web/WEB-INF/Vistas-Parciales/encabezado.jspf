@@ -1,16 +1,7 @@
 <%-- any content can be specified here e.g.: --%>
 <%@ page pageEncoding="UTF-8" %>
-
-<!--<link rel="stylesheet" href="lib/sweetalert2.min.css" type="text/css">-->
-
-<!-- CON ESTAS 2 LIBRERIAS BASTA PARA HACER USO DE SWEETALERT2 -->
-<!--
-<script src="lib/sweetalert2.all.min.js" type="text/javascript"></script>
-<script src="lib/jquery-3.3.1.min.js" type="text/javascript"></script>
--->
 <script type="text/javascript">
         $(document).ready(function(){
-            
             readCategorias();
             
             $("#cerrarsesion").click(function(){
@@ -75,7 +66,123 @@
             SwalDelete(op, id);
             e.preventDefault();
     });
+    
+    
+    //Al dar clic sobre el botòn con id btnmodi se ejecuta esta funciòn.
+    $(document).on('click', '#btnmodi', function(e){
+        e.preventDefault();
+        //Tomo los datos que se envian por la variable data-id,data-nombre,data-estado, etc.
+        var opcion = $(this).data('opcion');
+        var id_cat = $(this).data('id');   // it will get id of clicked row
+        var nom_cat = $(this).data('nombre');
+        var est_cat = $(this).data('estado');
+        //Los imprimo en la consola para asegurarme que llega la informaciòn esperada.
+        console.log('DATO RECIBIDOS');
+        console.log('Operación: '+opcion);
+        console.log('id categoria: '+id_cat);
+        console.log('Nombre categoria: '+nom_cat);
+        console.log('Estado categoria: '+est_cat);
+        //Imprimo en los controles del formulario en el modal.
+        $('#id').val(id_cat);  
+        $('#id1').val(id_cat);
+        $('#nombre').val(nom_cat);
+        //$('#actual_estado').val(est_cat);
+        $('#actual_estado').html('ESTADO CATEGORIA: '+est_cat);
+    });
+    
+    
+    
    });
+   
+   
+   
+   
+   //Cuando se haga clic en el botòn con actualizar del formulario en el modal se llama a esta funciòn.
+   function actualizarCategorias(){
+       var id_cat = $('#id').val();
+       var nom_cat = $('#nombre').val();
+       var est_cat = $('#estado').val();
+        
+       var parametros = {
+                      "opcion" : "modificar",
+                      "id_cat" : id_cat,
+                      "nombre_cat" : nom_cat,
+                      "estado_cat" : est_cat
+                  };
+
+       var parametros1 = {
+                      "id_categoria" : id_cat,
+                      "txtNomCategoria" : nom_cat,
+                      "txtEstadoCategoria" : est_cat
+                  };
+                  
+                  $.ajax({
+                    type:'POST',
+                    url:'categorias',
+                    data: parametros1,
+                    //data:'opcion=modificar&id_cat='+id_cat+'&nombre_cat='+nom_cat+'&estado_cat='+estado_cat,
+                    //dataType: 'json'
+                    dataType: 'html'
+                 })
+                 .done(function(response){
+                    console.log(response);
+                    //readCategorias();
+                    if(response == 'ok'){
+                        $('#id').val('');
+                        $('#id1').val('');
+                        $('#nombre').val('');
+                        $('#estado').val('');
+                        $('.ventanaCategorias').modal('hide'); 
+                        
+                        $('.statusMsg').html('<span style="color:green;">Registro actualizado correctamente.</p>');
+                        //$("#load-categorias").html("");
+                        //$('#load-categorias').load('');
+                        
+                        //Tengo problemas con este mètodo...averiguare despues...
+                        readCategorias();
+                        
+                    }else{
+                        //$('.ventanaCategorias').modal('hide');
+                        $('.statusMsg').html('<span style="color:red;">Error. No se pudo actualizar la información.</span>');
+                    }
+                    console.log(msg);
+                    //$('.btnmodi').removeAttr("disabled");
+                    //$('.modal-body').css('opacity', '');
+                 })
+                 .fail(function(response){
+                    console.log("Fail Process.");
+                 });
+                  
+        /*$.ajax({
+                type:'POST',
+                url:'categorias',
+                data: parametros1,
+                //data:'opcion=modificar&id_cat='+id_cat+'&nombre_cat='+nom_cat+'&estado_cat='+estado_cat,
+                //dataType: 'json'
+                beforeSend: function () {
+                    $('.btnmodi').attr("disabled","disabled");
+                    $('.modal-body').css('opacity', '.5');
+                },
+                success:function(msg){
+                    if(msg == 'ok'){
+                        $('#id').val('');
+                        $('#id1').val('');
+                        $('#nombre').val('');
+                        $('#estado').val('');
+                        $('.statusMsg').html('<span style="color:green;">Registro actualizado correctamente.</p>');
+                        readCategorias();
+                    }else{
+                        $('.statusMsg').html('<span style="color:red;">Error. No se pudo actualizar la información.</span>');
+                    }
+                    console.log(msg);
+                    $('.btnmodi').removeAttr("disabled");
+                    $('.modal-body').css('opacity', '');
+                }
+            });*/
+       
+   }
+   
+   
    
    
    function SwalDelete(opcion, id){
@@ -121,10 +228,13 @@
     });	    
   }
    
+   
+   
 
    //En esta función llamo al archivo jsp que tiene la data y le digo que la carge
    //en el contenedor o DIV(etiqueta html) con nombre load-categorias.
    function readCategorias(){
+        //$('#load-categorias').load('');
         $('#load-categorias').load('./Vistas-Categorias/listaCategorias.jsp');
     }
 </script>
@@ -148,14 +258,14 @@
 </script>-->
         
 <div style="background-color: #336699;" class="header">
-        <div class="row">
+        <div class="row align-content-end">
             <div class="col-md-1"></div>
-            <div style="font-size: 25px;color: #fff;" class="col-md-8">SISTEMA CONTROL DE INVENTARIO</div>
-            <div class="col-md-3">
-                <a href="index" class="btn btn-primary btn-sm" role="button">Inicio</a> |
-                <a href="categorias?opcion=listar" class="btn btn-primary btn-sm" role="button">Categorias</a> |
+            <div style="font-size: 25px;color: #fff; padding-top: 5px; padding-bottom: 5px;" class="col-md-8"><i class="fas fa-cart-plus"></i>&nbsp;SISTEMA CONTROL DE INVENTARIO</div>
+            <div style="font-size: 25px;color: #fff; padding-top: 5px; padding-bottom: 5px;" class="col-md-3">
+                <a href="index" class="btn btn-primary btn-sm" role="button"><i style="font-size: 20px; color: white;" class="fas fa-home">&nbsp;Inicio</i></a> |
+                <a href="categorias?opcion=listar" class="btn btn-primary btn-sm" role="button"><i style="font-size: 20px; color: white;" class="fab fa-buffer">&nbsp;Categorias</i></a> |
                 <!--<a href="#" class="btn btn-danger btn-sm" role="button" onclick="salir();">Salir</a>-->
-                <a href="javascript:void(0)" id="closesesion" class="btn btn-danger btn-sm" role="button" onclick="salir();">Salir</a>
+                <a href="javascript:void(0)" id="closesesion" class="btn btn-danger btn-sm" role="button" onclick="salir();"><i style="font-size: 20px; color: white;" class="far fa-times-circle"></i>&nbsp;Salir</a> |
             </div>
-      </div>    
+        </div>   
 </div>

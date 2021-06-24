@@ -86,6 +86,7 @@ public class CategoriaDAOImplementar implements CategoriaDAO{
                 //Invocar método para ejecutar la consulta.
                 this.conn.ejecutarSQL(miSQL.toString());
                 System.out.println("Registro Guardado...");
+                guardar = true;
             }else if(categoria.getId_categoria()>0){                            //Comprobación para actualizar...
                 System.out.println("Entramos...");
                 StringBuilder miSQL = new StringBuilder();
@@ -96,6 +97,7 @@ public class CategoriaDAOImplementar implements CategoriaDAO{
                 //Invocar método para ejecutar la consulta.
                 this.conn.ejecutarSQL(miSQL.toString());
                 System.out.println("Registro modificado correctamente!");
+                guardar = true;
             }
             
           //return guardar;
